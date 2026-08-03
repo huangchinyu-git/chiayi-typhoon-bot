@@ -6,8 +6,8 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # 填入步驟 1 取得的 Channel Access Token 與您的 User ID
-LINE_ACCESS_TOKEN = "YOUR_LINE_CHANNEL_ACCESS_TOKEN"
-USER_ID = "YOUR_LINE_USER_ID" 
+LINE_ACCESS_TOKEN = "5d59d2a2146f66cd04686373b1a46c05"
+USER_ID = "Ud44b7deb7227127613aba7357a63b643" 
 
 def send_line_message(text):
     url = "https://api.line.me/v2/bot/message/push"
@@ -72,3 +72,11 @@ def get_chiayi_work_school_status():
 
 if __name__ == "__main__":
     get_chiayi_work_school_status()
+
+if chiayi_results:
+    message = "📢【嘉義縣市 停班停課最新消息】\n\n" + "\n".join(chiayi_results)
+    print(message)
+    # 只有抓到停班停課時才發送 LINE 訊息
+    send_line_message(message)
+else:
+    print("目前無停班停課訊息，不發送 LINE 通知。")
