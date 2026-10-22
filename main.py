@@ -53,7 +53,7 @@ def get_chiayi_work_school_status():
             cols = row.find_all(['td', 'th'])
             row_text = [col.text.strip() for col in cols]
             
-            if row_text and any("新竹縣" in cell or "嘉義縣" in cell for cell in row_text):
+            if row_text and any("嘉義市" in cell or "嘉義縣" in cell for cell in row_text):
                 chiayi_results.append(" | ".join(row_text))
 
         # 組成發送訊息
